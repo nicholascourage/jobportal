@@ -19,4 +19,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
 
-Route::get('/company/{id}/{name}', 'CompanyController@index')->name('company.index');
+Route::get('/company/{id}/{company}', 'CompanyController@index')->name('company.index');
