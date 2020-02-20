@@ -12,12 +12,17 @@
             <br>
             <br>
             <form action="{{route('avatar')}}" method="POST" enctype="multipart/form-data">@csrf
-                <div class="card">    
+                <div class="card">
                     <div class="card-header">Update Resume</div>
                     <div class="card-body">
                         <input type="file" class="form-control" name="avatar">
                         <br>
                         <button class="btn btn-success float-right" type="submit">Update</button>
+                        @if($errors->has('avatar'))
+                        <div class="error" style="color: red;">
+                            {{$errors->first('avatar')}}
+                        </div>
+                    @endif
                     </div>
                 </div>
             </form> 
@@ -32,14 +37,38 @@
                         <div class="form-group">
                             <label for="address">Address</label>
                             <input type="text" id="address" name="address" class="form-control" value="{{Auth::user()->profile->address}}">
+                            @if($errors->has('address'))
+                                <div class="error" style="color: red;">
+                                    {{$errors->first('address')}}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="phone_number">Phone Number</label>
+                            <input type="text" id="phone_number" name="phone_number" class="form-control" value="{{Auth::user()->profile->phone_number}}">
+                            @if($errors->has('phone_number'))
+                                <div class="error" style="color: red;">
+                                    {{$errors->first('phone_number')}}
+                                </div>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="address">Experience</label>
                             <textarea id="experience" name="experience" class="form-control">{{Auth::user()->profile->experience}}</textarea>
+                            @if($errors->has('experience'))
+                                <div class="error" style="color: red;">
+                                    {{$errors->first('experience')}}
+                                </div>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="bio">Bio</label>
                             <textarea id="bio" name="bio" class="form-control">{{Auth::user()->profile->bio}}</textarea>
+                            @if($errors->has('bio'))
+                                <div class="error" style="color: red;">
+                                    {{$errors->first('bio')}}
+                                </div>
+                            @endif
                         </div>
                         <div class="form-group">
                             <button class="btn btn-success" type="submit">Update</button>
@@ -60,6 +89,7 @@
                     <p>Name: {{Auth::user()->name}}</p>
                     <p>Email: {{Auth::user()->email}}</p>
                     <p>Address: {{Auth::user()->profile->address}}</p>
+                    <p>Phone: {{Auth::user()->profile->phone_number}}</p>
                     <p>Gender: {{Auth::user()->profile->gender}}</p>
                     <p>Experience: {{Auth::user()->profile->experience}}</p>
                     <p>Bio: {{Auth::user()->profile->bio}}</p>
@@ -86,6 +116,11 @@
                         <input type="file" class="form-control" name="cover_letter">
                         <br>
                         <button class="btn btn-success float-right" type="submit">Update</button>
+                        @if($errors->has('cover_letter'))
+                        <div class="error" style="color: red;">
+                            {{$errors->first('cover_letter')}}
+                        </div>
+                    @endif
                     </div>
                 </div>
             </form>
@@ -97,6 +132,11 @@
                         <input type="file" class="form-control" name="resume">
                         <br>
                         <button class="btn btn-success float-right" type="submit">Update</button>
+                        @if($errors->has('resume'))
+                        <div class="error" style="color: red;">
+                            {{$errors->first('resume')}}
+                        </div>
+                    @endif
                     </div>
                 </div>
             </form>    
