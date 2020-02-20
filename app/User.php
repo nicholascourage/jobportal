@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 use App\Profile;
+use App\Company;
 
 class User extends Authenticatable
 {
@@ -42,6 +43,12 @@ class User extends Authenticatable
     public function profile(){
 
         return $this->hasOne(Profile::class);
+
+    }
+
+    public function company(){
+
+        return $this->hasOne(Company::class);
 
     }
 }
