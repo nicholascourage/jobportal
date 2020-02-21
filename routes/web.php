@@ -19,8 +19,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
 
+//Company
+
 Route::get('/company/{id}/{company}', 'CompanyController@index')->name('company.index');
 
+Route::get('/company/create', 'CompanyController@create');
+
+Route::post('company/create', 'CompanyController@store')->name('company.store');
+
+
+//Users
 Route::get('user/profile', 'UserController@index');
 
 Route::post('user/profile/create', 'UserController@store')->name('profile.create');
