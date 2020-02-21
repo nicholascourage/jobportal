@@ -32,7 +32,7 @@
                 <div class="card-header">
                     Update Your Company Information
                 </div>
-                <form method="POST" action="{{route('profile.create')}}">@csrf
+                <form method="POST" action="{{route('company.store')}}">@csrf
                     <div class="card-body">
                         <div class="form-group">
                             <label for="address">Address</label>
@@ -48,17 +48,14 @@
                             <input type="text" id="website" name="website" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="address">Slogan</label>
-                            <input type="text" id="address" name="address" class="form-control">
+                            <label for="slogan">Slogan</label>
+                            <input type="text" id="slogan" name="slogan" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="descriptio">Description</label>
                             <textarea id="description" name="description" class="form-control"></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="address">Address</label>
-                            <input type="text" id="address" name="address" class="form-control">
-                        </div>
+
 
 
                         <div class="form-group">
@@ -78,6 +75,10 @@
                 <div class="card-header">About Your Company</div>
                 <div class="card-body">
                     <p>Company Name: {{Auth::user()->company->cname}}</p>
+                    <p>Address: {{Auth::user()->company->address}}</p>
+                    <p>Website: <a href="{{Auth::user()->company->website}}">{{Auth::user()->company->website}}</a></p>
+                    <p>Slogan: {{Auth::user()->company->slogan}}</p>
+
                 </div>
             </div>
             <br>
