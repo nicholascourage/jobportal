@@ -47,4 +47,32 @@ class CompanyController extends Controller
 
 
     }
+
+    public function coverPhoto(Request $request){
+
+        $user_id = auth()->user()->id;
+        
+        if($request->hasfile('cover_photo')){
+
+            $file = $request->file('cover_photo');
+
+            $ext = $file->getClientOriginalExtension();
+
+            $filename = time() . '.' . $ext;
+
+            $file->move('uploads/coverphoto/', $filename);
+
+            Company::where('user_id', $user_id)->update([
+
+                'cover_photo'=>$filename
+
+            ]);
+
+            return redirect()->back()->with('message', 'Cover Photo Successfully Updated.');
+
+        }
+
+
+
+    }
 }

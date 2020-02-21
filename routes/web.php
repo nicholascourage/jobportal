@@ -27,6 +27,8 @@ Route::get('/company/create', 'CompanyController@create')->name('company.view');
 
 Route::post('company/create', 'CompanyController@store')->name('company.store');
 
+Route::post('company/coverphoto', 'CompanyController@coverPhoto')->name('cover.photo');
+
 
 //Users
 Route::get('user/profile', 'UserController@index');
