@@ -10,7 +10,11 @@
                 <img src="{{asset('cover/default-cover-img.jpg')}}" style="width:100%">
             @endif
             <div class="company-desc">
-                <img src="{{asset('avatar/default-avatar-img.jpg')}}" width="100">
+                @if(empty(Auth::user()->company->logo))
+                    <img src="{{asset('avatar/default-avatar-img.jpg')}}" width="100">
+                @else
+                    <img src="{{asset('uploads/logo')}}/{{Auth::user()->company->logo}}" width="100">
+                @endif 
                 <p>{{$company->description}}</p>
                 <h1>{{$company->cname}}</h1>
                 <p>Slogan-{{$company->slogan}}&nbsp; Address-{{$company->address}}&nbsp; Phone-{{$company->phone}}&nbsp; Website-{{$company->website}}&nbsp;</p>

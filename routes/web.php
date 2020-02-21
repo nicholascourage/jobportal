@@ -29,6 +29,7 @@ Route::post('company/create', 'CompanyController@store')->name('company.store');
 
 Route::post('company/coverphoto', 'CompanyController@coverPhoto')->name('cover.photo');
 
+Route::post('company/logo', 'CompanyController@companyLogo')->name('company.logo');
 
 //Users
 Route::get('user/profile', 'UserController@index');

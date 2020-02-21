@@ -71,8 +71,32 @@ class CompanyController extends Controller
             return redirect()->back()->with('message', 'Cover Photo Successfully Updated.');
 
         }
-
-
-
     }
+
+    public function companyLogo(Request $request){
+
+        $user_id = auth()->user()->id;
+        
+        if($request->hasfile('company_logo')){
+
+            $file = $request->file('company_logo');
+
+            $ext = $file->getClientOriginalExtension();
+
+            $filename = time() . '.' . $ext;
+
+            $file->move('uploads/logo/', $filename);
+
+            Company::where('user_id', $user_id)->update([
+
+                'logo'=>$filename
+
+            ]);
+
+            return redirect()->back()->with('message', 'Company Logo Successfully Updated.');
+
+        }
+    }
+
+
 }
