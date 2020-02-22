@@ -9,6 +9,8 @@ use App\Job;
 
 use App\Company;
 
+use App\Http\Requests\JobPostRequest;
+
 
 class JobController extends Controller
 {
@@ -38,7 +40,7 @@ class JobController extends Controller
 
     }
 
-    public function store(){
+    public function store(JobPostRequest $request){
 
         $user_id = auth()->user()->id;
 
