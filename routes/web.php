@@ -15,10 +15,11 @@
 
 Route::get('/', 'JobController@index');
 
-Route::get('/jobs/create', 'JobController@create');
+Route::get('/jobs/create', 'JobController@create')->name('job.create');
 
 Route::post('/jobs/create', 'JobController@store')->name('job.store');
 
+Route::get('/jobs/my-job', 'JobController@myjob');
 
 Auth::routes();
 
