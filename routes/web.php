@@ -11,7 +11,11 @@
 |
 */
 
+// jobs
+
 Route::get('/', 'JobController@index');
+
+Route::get('/jobs/create', 'JobController@create');
 
 Auth::routes();
 

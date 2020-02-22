@@ -23,4 +23,16 @@ class JobController extends Controller
         return view('jobs.show', compact('job'));
 
     }
+
+    public function company(){
+        
+        return view('company.index');
+
+    }
+
+    public function create(){
+
+        return view('jobs.create');
+
+    }
 }
