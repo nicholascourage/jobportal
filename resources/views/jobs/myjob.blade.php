@@ -34,7 +34,7 @@
                                 <td><i class="fas fa-calendar" aria-hidden="true"></i>&nbsp; Date: {{$job->created_at->diffForHumans()}}</td>
                                 <td>
                                     <a href="{{route('jobs.show', [$job->id, $job->slug])}}"><button class="btn btn-success btn-sm">Apply</button></a>
-                                    <a href="{{route('jobs.show', [$job->id, $job->slug])}}"><button class="btn btn-dark btn-sm">Edit</button></a>
+                                    <a href="{{route('job.edit', [$job->id])}}"><button class="btn btn-dark btn-sm">Edit</button></a>
 
                                 </td>
                             </tr>

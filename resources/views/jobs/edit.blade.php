@@ -6,13 +6,13 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    Create A Job
+                    Update Job
                 </div>
                 <div class="card-body">
                     <form action="{{route('job.store')}}" method="POST">@csrf
                         <div class="form-group">
                             <label for="title">Title: </label>
-                            <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}">
+                            <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ $job->title }}">
                             @error('title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -21,7 +21,7 @@
                         </div>
                         <div class="form-group">
                             <label for="description">Description: </label>
-                            <textarea name="description" class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
+                            <textarea name="description" class="form-control @error('description') is-invalid @enderror">{{ $job->description}}</textarea>
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <label for="roles">Roles: </label>
-                            <textarea name="roles" class="form-control @error('roles') is-invalid @enderror">{{ old('description') }}</textarea>
+                            <textarea name="roles" class="form-control @error('roles') is-invalid @enderror">{{ $job->description }}</textarea>
                             @error('roles')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -41,13 +41,13 @@
                             <label for="category">Category: </label>
                             <select name="category" class="form-control">
                                 @foreach (App\Category::all() as $cat)
-                                    <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                    <option vlaue="{{$cat->id}}" {{$cat->id==$job->category_id ? 'selected' : ''}}>{{$cat->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="position">Position: </label>
-                            <input type="text" name="position" class="form-control @error('position') is-invalid @enderror">
+                            <input type="text" name="position" class="form-control @error('position') is-invalid @enderror" value="{{ $job->position }}">
                             @error('position')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="form-group">
                             <label for="address">Address: </label>
-                            <input type="text" name="address" class="form-control @error('address') is-invalid @enderror">
+                            <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" value="{{ $job->address }}">
                             @error('address')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -66,16 +66,16 @@
                         <div class="form-group">
                             <label for="type">Type: </label>
                             <select class="form-control" name="type">
-                                <option value="fulltime">Full Time</option>
-                                <option value="parttime">Part Time</option>
-                                <option value="casual">Casual</option>
+                                <option value="fulltime" {{$job->type=='fulltime'?'selected': ''}}>Full Time</option>
+                                <option value="parttime" {{$job->type=='parttime'?'selected': ''}}>Part Time</option>
+                                <option value="casual" {{$job->type=='casual'?'selected': ''}}>Casual</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="status">Status: </label>
                             <select class="form-control" name="status">
-                                <option value="1">Live</option>
-                                <option value="0">Draft</option>
+                                <option value="1" {{$job->status== 1 ? 'selected' : ''}}>Live</option>
+                                <option value="0" {{$job->status== 0 ? 'selected': ''}}>Draft</option>
                             </select>
                         </div> 
                         <div class="form-group">

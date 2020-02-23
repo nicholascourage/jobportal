@@ -76,4 +76,13 @@ class JobController extends Controller
         return view('jobs.myjob', compact('jobs'));
 
     }
+
+    public function edit($id){
+
+        $job = Job::findOrFail($id);
+
+        return view('jobs.edit', compact('job'));
+
+
+    }
 }
