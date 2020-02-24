@@ -9,7 +9,7 @@
                     Update Job
                 </div>
                 <div class="card-body">
-                    <form action="{{route('job.store')}}" method="POST">@csrf
+                    <form action="{{route('job.update', [$job->id ])}}" method="POST">@csrf
                         <div class="form-group">
                             <label for="title">Title: </label>
                             <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ $job->title }}">
@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <label for="roles">Roles: </label>
-                            <textarea name="roles" class="form-control @error('roles') is-invalid @enderror">{{ $job->description }}</textarea>
+                            <textarea name="roles" class="form-control @error('roles') is-invalid @enderror">{{ $job->roles }}</textarea>
                             @error('roles')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -38,10 +38,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="category">Category: </label>
-                            <select name="category" class="form-control">
+                            <label for="category_id">Category: </label>
+                            <select name="category_id" class="form-control">
                                 @foreach (App\Category::all() as $cat)
-                                    <option vlaue="{{$cat->id}}" {{$cat->id==$job->category_id ? 'selected' : ''}}>{{$cat->name}}</option>
+                                    <option value="{{$cat->id}}" {{$cat->id==$job->category_id ? 'selected' : ''}}>{{$cat->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -80,7 +80,7 @@
                         </div> 
                         <div class="form-group">
                             <label for="lastdate">Closing Date: </label>
-                            <input type="date" name="last_date" class="form-control @error('address') is-invalid @enderror" value="{{ old('title') }}">
+                            <input type="date" name="last_date" class="form-control @error('address') is-invalid @enderror" value="{{ $job->last_date }}">
                             @error('last_date')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

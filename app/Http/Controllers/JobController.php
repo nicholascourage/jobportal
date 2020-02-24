@@ -83,6 +83,17 @@ class JobController extends Controller
 
         return view('jobs.edit', compact('job'));
 
+    }
+
+    public function update(Request $request, $id){
+
+        $job = Job::findOrFail($id);
+
+        $job->update($request->all());
+
+        return redirect()->back()->with('message', 'Job Successfully Updated.');
+
 
     }
+
 }
