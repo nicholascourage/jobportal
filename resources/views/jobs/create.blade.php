@@ -80,7 +80,7 @@
                         </div> 
                         <div class="form-group">
                             <label for="lastdate">Closing Date: </label>
-                            <input type="date" name="last_date" class="form-control @error('address') is-invalid @enderror" value="{{ old('title') }}">
+                            <input type="text" name="last_date" id="datepicker" class="form-control @error('address') is-invalid @enderror" value="{{ old('last_date') }}">
                             @error('last_date')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
