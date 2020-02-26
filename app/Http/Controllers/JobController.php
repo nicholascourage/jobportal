@@ -11,13 +11,15 @@ use App\Company;
 
 use App\Http\Requests\JobPostRequest;
 
+Use Auth;
+
 
 class JobController extends Controller
 {
 
     public function __construct(){
 
-        $this->middleware('employer', ['except'=>array('index', 'show')]);
+        //$this->middleware('employer', ['except'=>array('index', 'show', 'apply')]);
 
     }
 
@@ -100,7 +102,25 @@ class JobController extends Controller
 
         return redirect()->back()->with('message', 'Job Successfully Updated.');
 
+    }
+
+    /*public function apply(Request $request, $id){
+
+        $jobId = Job::find($id);
+        
+        $jobId->users()->attach(Auth::user()->id);
+
+        return redirect()->back()->with('message', 'Application sent.');
+
+    }*/
+
+      
+    public function apply(Request $request,$id){
+        $jobId = Job::find($id);
+        $jobId->users()->attach(Auth::user()->id);
+        return redirect()->back()->with('message','Application sent!');
 
     }
+
 
 }

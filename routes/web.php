@@ -61,3 +61,4 @@ Route::view('employer/register', 'auth.employer-register')->name('employer.regis
 Route::post('employer/register', 'EmployerRegisterController@employerRegister')->name('emp.register');
 
 
+Route::post('/applications/{id}', 'JobController@apply')->name('apply');
