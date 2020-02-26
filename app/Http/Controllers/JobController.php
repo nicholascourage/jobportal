@@ -104,7 +104,7 @@ class JobController extends Controller
 
     }
 
-    /*public function apply(Request $request, $id){
+    public function apply(Request $request, $id){
 
         $jobId = Job::find($id);
         
@@ -112,15 +112,16 @@ class JobController extends Controller
 
         return redirect()->back()->with('message', 'Application sent.');
 
-    }*/
+    }
 
-      
-    public function apply(Request $request,$id){
-        $jobId = Job::find($id);
-        $jobId->users()->attach(Auth::user()->id);
-        return redirect()->back()->with('message','Application sent!');
+    public function applicant(){
+
+        $applicants = Job::has('users')->where('user_id', auth()->user()->id)->get();
+
+        return view('jobs.applicants', compact('applicants'));
 
     }
+
 
 
 }
