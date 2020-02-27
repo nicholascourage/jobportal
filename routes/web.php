@@ -25,8 +25,9 @@ Route::post('/jobs/{id}/edit', 'JobController@update')->name('job.update');
 
 Route::get('/jobs/applications', 'JobController@applicant')->name('applicant');
 
-
 Route::get('/jobs/my-job', 'JobController@myjob')->name('my.job');
+
+Route::get('/jobs/alljobs', 'JobController@allJobs')->name('alljobs');
 
 Auth::routes();
 

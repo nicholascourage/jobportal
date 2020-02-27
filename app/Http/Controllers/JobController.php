@@ -19,7 +19,7 @@ class JobController extends Controller
 
     public function __construct(){
 
-        $this->middleware('employer', ['except'=>array('index', 'show', 'apply')]);
+        $this->middleware('employer', ['except'=>array('index', 'show', 'apply', 'allJobs')]);
 
     }
 
@@ -27,7 +27,7 @@ class JobController extends Controller
 
         $jobs = Job::latest()->limit(10)->where('status', 1)->get();
         
-        $companies = Company::latest()->limit(12)->get();
+        $companies = Company::get()->random(12);
 
         return view('welcome', compact('jobs', 'companies'));
 
@@ -121,6 +121,14 @@ class JobController extends Controller
         $applicants = Job::has('users')->where('user_id', auth()->user()->id)->get();
 
         return view('jobs.applicants', compact('applicants'));
+
+    }
+
+    public function allJobs(){
+
+        $jobs = Job::latest()->paginate(10);
+
+        return view('jobs.alljobs', compact('jobs'));
 
     }
 

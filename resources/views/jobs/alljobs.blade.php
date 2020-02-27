@@ -29,34 +29,13 @@
                @endforeach
            </tbody>
        </table>
+       {{$jobs->links()}}
     </div>
-    <div>
-        <a href="{{route('alljobs')}}">
-            <button class="btn btn-success btn-lg" style="width:100%">Browse all jobs</button>
-        </a>
-    </div>
-    <br>
-    <br>
-    <h1>Featured Companies</h1>
+
 
 </div>
 
-<div class="container">
-    <div class="row">
-        @foreach($companies as $company)
-            <div class="col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <img src="{{asset('uploads/logo')}}/{{$company->logo}}" width="80px">              
-                        <h5 class="card-title">{{$company->cname}}</h5>
-                        <p class="card-text">{{Str::limit($company->description, 20)}}</p>
-                        <a href="{{route('company.index', [$company->id, $company->slug])}}" class="btn btn-primary">Visit Company</a>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
-</div>
+
 
 @endsection
 <style>
