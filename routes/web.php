@@ -23,7 +23,7 @@ Route::get('/jobs/{id}/edit', 'JobController@edit')->name('job.edit');
 
 Route::post('/jobs/{id}/edit', 'JobController@update')->name('job.update');
 
-Route::get('/jobs/applications', 'JobController@applicant');
+Route::get('/jobs/applications', 'JobController@applicant')->name('applicant');
 
 
 Route::get('/jobs/my-job', 'JobController@myjob')->name('my.job');

@@ -4,16 +4,17 @@
 <div class="container">
     <div class="col-md-12">
         <div class="company-profile">
-            @if(!empty(Auth::user()->company->cover_photo))
-                <img src="{{asset('uploads/coverphoto')}}/{{Auth::user()->company->cover_photo}}" style="width:100%">
-            @else
+            @if(empty($company->cover_photo))
                 <img src="{{asset('cover/default-cover-img.jpg')}}" style="width:100%">
+            @else
+                <img src="{{asset('uploads/coverphoto')}}/{{$company->cover_photo}}" style="width:100%">
+
             @endif
             <div class="company-desc">
-                @if(empty(Auth::user()->company->logo))
+                @if(empty($company->logo))
                     <img src="{{asset('avatar/default-avatar-img.jpg')}}" width="100">
                 @else
-                    <img src="{{asset('uploads/logo')}}/{{Auth::user()->company->logo}}" width="100">
+                    <img src="{{asset('uploads/logo')}}/{{$company->logo}}" width="100">
                 @endif 
                 <p>{{$company->description}}</p>
                 <h1>{{$company->cname}}</h1>
