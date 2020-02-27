@@ -36,8 +36,8 @@ $factory->define(App\Company::class, function (Faker $faker) {
         'address'=>$faker->address,
         'phone'=>$faker->phoneNumber,
         'website'=>$faker->domainName,
-        'logo'=>'avatar/default-avatar-img.jpg',
-        'cover_photo'=>'cover/default-cover-img.jpg',
+        'logo'=>'default-avatar-img.jpg',
+        'cover_photo'=>'default-cover-img.jpg',
         'slogan'=>'Make Your Tomorrow\'s Yesertday',
         'description'=>$faker->paragraph(rand(2,10)) 
 

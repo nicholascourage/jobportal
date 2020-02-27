@@ -84,7 +84,7 @@
             <br>
             <form action="{{route('cover.photo')}}" method="POST" enctype="multipart/form-data">@csrf
                 <div class="card">
-                    <div class="card-header">Update Cover Letter</div>
+                    <div class="card-header">Update Cover Photo</div>
                     <div class="card-body">
                         <input type="file" class="form-control" name="cover_photo">
                         <br>
