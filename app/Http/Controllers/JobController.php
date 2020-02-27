@@ -19,15 +19,17 @@ class JobController extends Controller
 
     public function __construct(){
 
-        //$this->middleware('employer', ['except'=>array('index', 'show', 'apply')]);
+        $this->middleware('employer', ['except'=>array('index', 'show', 'apply')]);
 
     }
 
     public function index(){
 
-        $jobs = Job::all()->take(10);
+        $jobs = Job::latest()->limit(10)->where('status', 1)->get();
+        
+        $companies = Company::latest()->limit(12)->get();
 
-        return view('welcome', compact('jobs'));
+        return view('welcome', compact('jobs', 'companies'));
 
     }
 
