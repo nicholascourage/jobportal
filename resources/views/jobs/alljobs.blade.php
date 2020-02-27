@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <form action="" method="GET">
+        <form action="{{route('alljobs')}}" method="GET">
             <div class="form-inline">
                 <div class="form-group">
                     <label>Keyword&nbsp;</label>
@@ -66,7 +66,7 @@
                @endforeach
            </tbody>
        </table>
-       {{$jobs->links()}}
+       {{$jobs->appends(Illuminate\Support\Facades\Request::except('page'))->links()}}
     </div>
 
 
