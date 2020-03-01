@@ -29,7 +29,9 @@ Route::get('/jobs/my-job', 'JobController@myjob')->name('my.job');
 
 Route::get('/jobs/alljobs', 'JobController@allJobs')->name('alljobs');
 
-Auth::routes();
+//Auth::routes();
+
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 

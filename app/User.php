@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Profile;
 use App\Company;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
