@@ -50,7 +50,7 @@ Route::post('company/coverphoto', 'CompanyController@coverPhoto')->name('cover.p
 Route::post('company/logo', 'CompanyController@companyLogo')->name('company.logo');
 
 //Users
-Route::get('user/profile', 'UserController@index');
+Route::get('user/profile', 'UserController@index')->name('user.profile');
 
 Route::post('user/profile/create', 'UserController@store')->name('profile.create');
 
