@@ -31,7 +31,19 @@ class Job extends Model
 
         return \DB::table('job_user')->where('user_id', auth()->user()->id)->where('job_id', $this->id)->exists();
 
+    }
+
+    public function favourites(){
+
+        return $this->belongsToMany(User::class)->withTimeStamps();
 
     }
+
+    public function checkSaved(){
+
+        return \DB::table('job_user')->where('user_id', auth()->user()->id)->where('job_id', $this->id)->exists();
+
+    }
+
 
 }
