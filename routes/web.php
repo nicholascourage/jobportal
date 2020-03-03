@@ -70,6 +70,6 @@ Route::post('/applications/{id}', 'JobController@apply')->name('apply');
 
 // Save and unsave jobs
 
-route::post('/save/{id}', 'FavourtieController@saveJob');
+route::post('/save/{id}', 'FavouriteController@saveJob');
 
 Route::post('/unsave/{id}', 'FavouriteController@unSaveJob');

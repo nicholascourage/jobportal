@@ -1994,13 +1994,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
-  },
+  props: ['jobid', 'favourited'],
   data: function data() {
     return {
       'show': true
     };
+  },
+  mounted: function mounted() {
+    this.show = this.jobFavourited ? true : false;
+  },
+  computed: {
+    jobFavourited: function jobFavourited() {
+      return this.favourited;
+    }
+  },
+  methods: {
+    save: function save() {
+      var _this = this;
+
+      axios.post('/save/' + this.jobid).then(function (response) {
+        return _this.show = true;
+      })["catch"](function (error) {
+        return alert('error');
+      });
+    },
+    unsave: function unsave() {
+      var _this2 = this;
+
+      axios.post('/unsave/' + this.jobid).then(function (response) {
+        return _this2.show = false;
+      })["catch"](function (error) {
+        return alert('error');
+      });
+    }
   }
 });
 
@@ -37467,13 +37493,31 @@ var render = function() {
     _vm.show
       ? _c(
           "button",
-          { staticClass: "btn btn-primary", staticStyle: { width: "100%" } },
-          [_vm._v("Save")]
+          {
+            staticClass: "btn btn-primary",
+            staticStyle: { width: "100%" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.unsave()
+              }
+            }
+          },
+          [_vm._v("unSave")]
         )
       : _c(
           "button",
-          { staticClass: "btn btn-dark", staticStyle: { width: "100%" } },
-          [_vm._v("Unsave")]
+          {
+            staticClass: "btn btn-dark",
+            staticStyle: { width: "100%" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.save()
+              }
+            }
+          },
+          [_vm._v("save")]
         )
   ])
 }

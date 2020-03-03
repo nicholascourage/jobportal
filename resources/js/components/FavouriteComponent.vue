@@ -1,20 +1,43 @@
 <template>
     <div>
-        <button v-if="show" class="btn btn-primary" style="width: 100%">Save</button>
-        <button v-else class="btn btn-dark" style="width: 100%">Unsave</button>
+        <button v-if="show" @click.prevent="unsave()" class="btn btn-primary" style="width: 100%">unSave</button>
+        <button v-else @click.prevent="save()" class="btn btn-dark" style="width: 100%">save</button>
     
     </div>
 </template>
 
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
-        },
+        props:['jobid', 'favourited'],
         data(){
             return{
                 'show':true
             }
+        },
+        mounted(){
+
+            this.show = this.jobFavourited ? true:false
+
+        },
+        computed:{
+            jobFavourited(){
+                return this.favourited
+            }
+        },
+        methods:{
+
+            save(){
+
+                axios.post('/save/'+this.jobid).then(response=>this.show=true).catch(error=>alert('error'))
+
+            },
+            unsave(){
+
+                axios.post('/unsave/'+this.jobid).then(response=>this.show=false).catch(error=>alert('error'))
+
+
+            }
+
         }
     }
 </script>

@@ -35,13 +35,13 @@ class Job extends Model
 
     public function favourites(){
 
-        return $this->belongsToMany(User::class)->withTimeStamps();
+        return $this->belongsToMany(Job::class, 'favourites', 'job_id', 'user_id')->withTimeStamps();
 
     }
 
     public function checkSaved(){
 
-        return \DB::table('job_user')->where('user_id', auth()->user()->id)->where('job_id', $this->id)->exists();
+        return \DB::table('favourites')->where('user_id', auth()->user()->id)->where('job_id', $this->id)->exists();
 
     }
 

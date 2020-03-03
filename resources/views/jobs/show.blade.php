@@ -40,7 +40,7 @@
                     <apply-component :jobid="{{$job->id}}"></apply-component>
                 @endif
                 <br>
-                <favourite-component></favourite-component>
+                <favourite-component :jobid="{{$job->id}}" :favourited={{$job->checkSaved()?'true':'false'}}></favourite-component>
             @endif
         </div>
     </div>
