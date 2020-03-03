@@ -87,7 +87,10 @@
                                     @else
                                         <a class="dropdown-item" href="{{route('user.profile')}}">
                                             {{ __('Profile') }}
-                                        </a>                                   
+                                        </a> 
+                                        <a class="dropdown-item" href="{{route('home')}}">
+                                            {{ __('Saved Jobs') }}
+                                        </a>                                    
                                     @endif
                                     <a href="{{route('applicant')}}" class="dropdown-item">Applicants</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
