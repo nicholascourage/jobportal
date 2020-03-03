@@ -152,6 +152,17 @@ class JobController extends Controller
 
     }
 
+    public function searchJobs(Request $request){
+
+        $keyword = $request->get('keyword');
+
+        $job = Job::where('title', 'like','%'.$keyword.'%')->get();
+
+        return response()->json($job);
+
+
+    }
+
 
 
 }
