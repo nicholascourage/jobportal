@@ -2047,12 +2047,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  data: function data() {
+    return {
+      keyword: '',
+      results: []
+    };
   },
   methods: {
-    Searchjobs: function Searchjobs() {}
+    searchJobs: function searchJobs() {
+      var _this = this;
+
+      this.results = [];
+
+      if (this.keyword.length > 1) {
+        axios.get('/jobs/search', {
+          params: {
+            keyword: this.keyword
+          }
+        }).then(function (response) {
+          _this.results = response.data;
+        });
+      }
+    }
   }
 });
 
@@ -37575,25 +37602,54 @@ var render = function() {
         {
           name: "model",
           rawName: "v-model",
-          value: _vm.keywprd,
-          expression: "keywprd"
+          value: _vm.keyword,
+          expression: "keyword"
         }
       ],
       staticClass: "form-control",
       attrs: { type: "text", placeholder: "Search Jobs" },
-      domProps: { value: _vm.keywprd },
+      domProps: { value: _vm.keyword },
       on: {
-        keyup: function($event) {
-          return _vm.Searchjobs()
-        },
+        keyup: _vm.searchJobs,
         input: function($event) {
           if ($event.target.composing) {
             return
           }
-          _vm.keywprd = $event.target.value
+          _vm.keyword = $event.target.value
         }
       }
-    })
+    }),
+    _vm._v(" "),
+    _vm.results.length
+      ? _c("div", { staticClass: "card-footer" }, [
+          _c(
+            "ul",
+            { staticClass: "list-group" },
+            _vm._l(_vm.results, function(result) {
+              return _c("li", { staticClass: "list-group-item" }, [
+                _c(
+                  "a",
+                  {
+                    staticStyle: { color: "#000" },
+                    attrs: {
+                      href: "/jobs/" + result.id + "/" + result.slug + "/"
+                    }
+                  },
+                  [
+                    _vm._v(_vm._s(result.title) + "\n                    "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("small", { staticClass: "badge badge-success" }, [
+                      _vm._v(_vm._s(result.position))
+                    ])
+                  ]
+                )
+              ])
+            }),
+            0
+          )
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
