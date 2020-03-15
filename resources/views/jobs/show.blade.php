@@ -9,6 +9,28 @@
         </div>
 
     @endif
+    @if(Session::has('err_message'))
+
+        <div class="alert alert-danger">
+            {{Session::get('err_message')}}
+        </div>
+
+    @endif
+    @if(isset($errors)&&count($errors)>0)
+
+        <div class="alter alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+
+                    <li>{{$error}}</li>
+
+                @endforeach
+            </ul>
+
+        </div>
+
+    @endif
+
     <div class="row">
         <div class="col-md-9">
             <div class="bg-white border rounded py-4 border-top-blue-3">

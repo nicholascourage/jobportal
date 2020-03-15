@@ -12,6 +12,15 @@ class EmailController extends Controller
 {
     public function send(Request $request){
 
+        $this->validate($request, [
+
+            'your_name'=>'required|string',
+            'your_email'=>'required|email',
+            'friend_name'=>'required|string',
+            'friend_email'=>'required|email'
+
+        ]);
+
         $homeUrl = url('/');
 
         $jobId = $request->get('job_id');
@@ -31,9 +40,19 @@ class EmailController extends Controller
 
         $emailTo = $request->get('friend_email');
 
-        Mail::to($emailTo)->send(new SendJob($data));
+        try{
 
-        return redirect()->back()->with('message', 'Job sent to ' . $emailTo);
+            Mail::to($emailTo)->send(new SendJob($data));
+
+            return redirect()->back()->with('message', 'Job sent to ' . $emailTo);
+
+        }catch(\Exception $e){
+
+            return redirect()->back()->with('err_message', 'Something went wrong.');
+
+        }
+
+       
 
 
 
