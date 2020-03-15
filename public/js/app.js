@@ -37455,7 +37455,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "mb-4" }, [
     _c("form", { on: { submit: _vm.formSubmit } }, [
       _vm.show
         ? _c(
@@ -37542,7 +37542,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "mb-4" }, [
     _vm.show
       ? _c(
           "button",

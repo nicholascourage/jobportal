@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="mb-4">
         <form @submit="formSubmit">
            <button v-if="show" class="btn btn-success" style="width: 100%" type="submit">Apply</button>
             <div v-else class="alert alert-success">

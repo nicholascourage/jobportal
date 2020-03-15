@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="mb-4">
         <button v-if="show" @click.prevent="unsave()" class="btn btn-primary" style="width: 100%">unSave</button>
         <button v-else @click.prevent="save()" class="btn btn-dark" style="width: 100%">save</button>
     
