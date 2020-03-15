@@ -78,3 +78,7 @@ Route::post('/unsave/{id}', 'FavouriteController@unSaveJob');
 //Search
 
 Route::get('jobs/search', 'JobController@searchJobs');
+
+// email
+
+Route::post('/job/mail', 'EmailController@send')->name('mail');

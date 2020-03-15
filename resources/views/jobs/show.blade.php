@@ -2,6 +2,13 @@
 
 @section('content')
 <div class="container my-5">
+    @if(Session::has('message'))
+
+        <div class="alert alert-success">
+            {{Session::get('message')}}
+        </div>
+
+    @endif
     <div class="row">
         <div class="col-md-9">
             <div class="bg-white border rounded py-4 border-top-blue-3">
@@ -49,7 +56,7 @@
                             </div>
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#exampleModal">
-                                Share this job
+                                <i class="fas fa-share-alt"></i> Share this job
                             </button>
                             
                             <!-- Modal -->
@@ -62,7 +69,9 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <form>
+                                        <form action="{{route('mail')}}" method="POST">@csrf
+                                            <input type="hidden" name="job_id" value="{{$job->id}}">
+                                            <input type="hidden" name="job_slug" value="{{$job->slug}}">
                                             <div class="modal-body">
                                                 <div class="form-group">
                                                     <label>Your name</label>
@@ -83,7 +92,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Mail this job</button>
+                                                <button type="submit" class="btn btn-primary">Mail this job</button>
                                             </div>
                                         </form>    
                                     </div>
