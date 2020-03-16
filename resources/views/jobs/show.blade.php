@@ -128,11 +128,22 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="border rounded bg-white pt-5 border-top-blue-3">
-                <div class="row px-4">
+            <div class="border rounded bg-white">
+                <div class="row">
                     <div class="col-md-12">
-                        <h5 class="h4 font-weight-bold mb-4">Lorem Ipsum</h5>
-                        <ul class="list-unstyled advertise-features">
+                        <h5 class="h4 font-weight-bold px-4 py-3 m-0">Similar jobs</h5>
+                        <ul class="list-unstyled">
+                            @foreach($jobRecommendations as $jobRecommendation)
+                                <li class="border-top px-4 py-3">
+                                    <a href="{{route('jobs.show', [$jobRecommendation->id, $jobRecommendation->slug])}}" class="text-decoration-none">
+                                        <h6>{{$jobRecommendation->position}}</h6>
+                                        <p class="mb-0 text-secondary">£ Competitive Salary</p>
+                                        <p class="mb-0 text-secondary">Town/City, County</p>
+                                    </a>    
+                                </li>
+                            @endforeach    
+                        </ul> 
+                        <!--<ul class="list-unstyled advertise-features">
                             <li class="border-top py-3">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -173,33 +184,7 @@
                                     </div>
                                 </div>
                             </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="bg-light rounded-bottom">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="list-unstyled p-4 advertise-features">
-                                <li>
-                                    <div class="row">
-                                        <div class="col-md-8"><p>Lorem Ipsum:</p></div>
-                                        <div class="col-md-4"><p><strong>000.00</strong></p></div>
-                                    </div>    
-                                </li>
-                                <li>
-                                    <div class="row">
-                                        <div class="col-md-8"><p>Lorem Ipsum:</p></div>
-                                        <div class="col-md-4"><p><strong>000.00</strong></p></div>
-                                    </div>    
-                                </li>
-                                <li class="border-top border-secondary pt-3">
-                                    <div class="row">
-                                        <div class="col-md-8"><p><strong>Lorem:</strong></p></div>
-                                        <div class="col-md-4"><p><strong>000.00</strong></p></div>
-                                    </div>    
-                                </li>
-                            </ul>
-                        </div>
+                        </ul>-->
                     </div>
                 </div>
             </div>  

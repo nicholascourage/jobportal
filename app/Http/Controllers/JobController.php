@@ -35,6 +35,14 @@ class JobController extends Controller
 
     public function show($id, Job $job){
 
+        $jobRecommendations = $this->jobRecommendations($job);
+
+        return view('jobs.show', compact('job', 'jobRecommendations'));
+
+    }
+
+    public function jobRecommendations($job){
+
         $data = [];
 
         $jobBasedOnCategories = Job::latest()
@@ -59,6 +67,7 @@ class JobController extends Controller
 
         $jobBasedOnPosition = Job::latest()
             ->where('position', 'LIKE', '%' . $job->position . '%')
+            //->whereDate('last_date','>',date('Y-m-d'))
             ->where('id','!=', $job->id)
             ->where('status',1)
             ->get();
@@ -70,9 +79,9 @@ class JobController extends Controller
 
         $unique = $collection->unique('id');
 
-        $jobRecommendations = $unique->values()->all();
+        $jobRecommendations = $unique->values()->first();
 
-        return view('jobs.show', compact('job', 'jobRecommendations'));
+        return $jobRecommendations;
 
     }
 
