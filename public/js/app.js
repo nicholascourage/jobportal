@@ -37465,7 +37465,7 @@ var render = function() {
               staticStyle: { width: "100%" },
               attrs: { type: "submit" }
             },
-            [_vm._v("Apply")]
+            [_c("span", { staticClass: "font-weight-bold" }, [_vm._v("Apply")])]
           )
         : _c("div", { staticClass: "alert alert-success" }, [
             _vm._v("\n            Application sent successfully.\n        ")
@@ -37547,7 +37547,7 @@ var render = function() {
       ? _c(
           "button",
           {
-            staticClass: "btn btn-primary",
+            staticClass: "btn btn-outline-primary shadow-none",
             staticStyle: { width: "100%" },
             on: {
               click: function($event) {
@@ -37556,12 +37556,18 @@ var render = function() {
               }
             }
           },
-          [_vm._v("unSave")]
+          [
+            _c("i", { staticClass: "las la-heart mr-2 la-lg text-success" }),
+            _vm._v(" "),
+            _c("span", { staticClass: "font-weight-bold" }, [
+              _vm._v("Shortlisted")
+            ])
+          ]
         )
       : _c(
           "button",
           {
-            staticClass: "btn btn-dark",
+            staticClass: "btn btn-outline-primary shadow-none",
             staticStyle: { width: "100%" },
             on: {
               click: function($event) {
@@ -37570,7 +37576,12 @@ var render = function() {
               }
             }
           },
-          [_vm._v("save")]
+          [
+            _c("i", { staticClass: "las la-heart mr-2 la-lg" }),
+            _c("span", { staticClass: "font-weight-bold" }, [
+              _vm._v("Shortlist")
+            ])
+          ]
         )
   ])
 }

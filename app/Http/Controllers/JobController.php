@@ -35,6 +35,26 @@ class JobController extends Controller
 
     public function show($id, Job $job){
 
+        $jobBasedOnCategories = Job::latest()
+            ->where('category_id', $job->category_id)
+            //->whereDate('last_date','>',date('Y-m-d'))
+            ->where('id','!=', $job->id)
+            ->limit(2)
+            ->get();
+
+        $jobBasedOnCompany = Job::latest()
+            ->where('company_id', $job->company_id)
+            //->whereDate('last_date','>',date('Y-m-d'))
+            ->where('id','!=', $job->id)
+            ->limit(2)
+            ->get();
+
+        $jobBasedOnPosition = Job::latest()
+            ->where('position', 'LIKE', '%' . $keyword . '%')
+            ->where('id','!=', $job->id)
+            ->get();
+        //echo dd($jobBasedOnCompany );
+
         return view('jobs.show', compact('job'));
 
     }

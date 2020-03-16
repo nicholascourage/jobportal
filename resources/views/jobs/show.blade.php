@@ -45,14 +45,14 @@
                                 <div class="col-md-12">
                                     <div class="bg-light border border-info rounded px-4 py-3">
                                         <div class="row">
-                                            <div class="col-md-6 col-sm-3"><i class="lar la-clock"></i></div>
-                                            <div class="col-md-6 col-sm-3">.col-6 .col-sm-3</div>
-                                        
+                                            <div class="col-lg-6 d-flex align-items-center"><i class="lar la-clock mr-2 la-lg"></i><span class="font-weight-bold">{{$job->type}}</span></div>
+                                            <div class="col-lg-6 d-flex align-items-center"><i class="las la-map-marker mr-2 la-lg"></i><span class="font-weight-bold">Bournemouth, Dorset</span></div>
+                                
                                             <!-- Force next columns to break to new line -->
                                             <div class="w-100"></div>
                                         
-                                            <div class="col-md-6 col-sm-3">.col-6 .col-sm-3</div>
-                                            <div class="col-md-6 col-sm-3">.col-6 .col-sm-3</div>
+                                            <div class="col-lg-6 d-flex align-items-center"><i class="las la-pound-sign mr-2 la-lg"></i><span class="font-weight-bold">Competitive salary</span></div>
+                                            <div class="col-lg-6 d-flex align-items-center"><i class="las la-tag mr-2 la-lg"></i><span class="font-weight-bold">{{$job->category->name}}</span></div>
                                         </div>
                                     </div>    
                                 </div> 
@@ -70,16 +70,16 @@
                                 @endif
                                 <favourite-component :jobid="{{$job->id}}" :favourited={{$job->checkSaved()?'true':'false'}}></favourite-component>
                             @endif
-                            <div class="border border-info rounded mb-4">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-outline-primary form-control shadow-none" data-toggle="modal" data-target="#exampleModal">
+                                <i class="fas fa-share-alt mr-2"></i><span class="font-weight-bold">Share this job</span>
+                            </button>
+                            <div class="border border-info rounded my-4">
                                 <a href="{{route('company.index', [$job->company->id, $job->company->slug] )}}"><img src="{{asset('uploads/logo')}}/{{$job->company->logo}}" class="img-fluid p-3"></a>
                                 <div class="border-top border-info p-2">
                                     <a href="{{route('company.index', [$job->company->id, $job->company->slug] )}}" class="text-decoration-none">About this company</a>
                                 </div>    
                             </div>
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#exampleModal">
-                                <i class="fas fa-share-alt"></i> Share this job
-                            </button>
                             
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -21,6 +21,12 @@ class Job extends Model
 
     }
 
+    public function category(){
+
+        return $this->belongsTo('App\Category');
+
+    }
+
     public function users(){
 
         return $this->belongsToMany(User::class)->withTimeStamps();
