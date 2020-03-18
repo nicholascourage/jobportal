@@ -85,3 +85,5 @@ Route::post('/job/mail', 'EmailController@send')->name('mail');
 
 //Admin
 Route::get('/dashboard', 'DashboardController@index')->middleware('admin');
+
+Route::get('/dashboard/create', 'DashboardController@create')->middleware('admin');

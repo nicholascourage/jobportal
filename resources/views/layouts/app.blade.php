@@ -74,8 +74,11 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     @if(Auth::user()->user_type=='employer')
                                         {{Auth::user()->company->cname}}
+                                    @elseif(Auth::user()->user_type=='seeker')
+                                        {{ Auth::user()->name }} 
                                     @else
-                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                        {{ Auth::user()->name }} 
+                                        <span class="caret"></span>
                                     @endif    
                                 </a>
 
@@ -85,7 +88,9 @@
                                             {{ __('Company') }}
                                         </a>
                                         <a href="{{route('my.job')}}" class="dropdown-item">My Jobs</a>
-                                    @else
+                                        <a href="{{route('applicant')}}" class="dropdown-item">Applicants</a>
+
+                                    @elseif(Auth::user()->user_type=='seeker')
                                         <a class="dropdown-item" href="{{route('user.profile')}}">
                                             {{ __('Profile') }}
                                         </a> 
@@ -93,7 +98,6 @@
                                             {{ __('Saved Jobs') }}
                                         </a>                                    
                                     @endif
-                                    <a href="{{route('applicant')}}" class="dropdown-item">Applicants</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
