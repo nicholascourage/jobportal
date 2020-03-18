@@ -82,3 +82,6 @@ Route::get('jobs/search', 'JobController@searchJobs');
 // email
 
 Route::post('/job/mail', 'EmailController@send')->name('mail');
+
+//Admin
+Route::get('/dashboard', 'DashboardController@index')->middleware('admin');
