@@ -3,6 +3,11 @@
 @section('content')
 
 <div class="container">
+    @if(Session::has('message'))
+
+        <div class="alert alert-success">{{Session::get('message')}}</div>
+
+    @endif
     <div class="row">
         <div class="col-md-4">
             @include('admin.left-menu')
