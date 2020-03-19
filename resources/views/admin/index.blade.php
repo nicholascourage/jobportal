@@ -16,31 +16,40 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Content</th>
+                        <th scope="col">Status</th>
+                        <td>Date</td>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                    @foreach($posts as $post)
+                        <tr>
+                            <td><img src="{{asset('storage/' . $post->image)}}" class="img-fluid"></td>
+                            <td>{{$post->title}}</td>
+                            <td>{{Str::limit($post->content, '20')}}</td>
+                            <td>
+                                @if($post->status == 1)
+                                
+                                    Live
+
+                                @else
+
+                                    Draft
+
+                                @endif    
+
+                            </td>
+                            <td>{{$post->created_at->diffForHumans()}}</td>
+                            <td>
+                                <button class="btn btn-primary">Edit</button>
+                                <button class="btn btn-danger">Delete</button>
+                            </td>
+                            
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
