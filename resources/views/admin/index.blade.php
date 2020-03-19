@@ -44,7 +44,7 @@
                             </td>
                             <td>{{$post->created_at->diffForHumans()}}</td>
                             <td>
-                                <button class="btn btn-primary">Edit</button>
+                                <button class="btn btn-primary"><a href="{{route('post.edit',[$post->id])}}" class="text-white">Edit</a></button>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                                     Delete

@@ -66,4 +66,12 @@ class DashboardController extends Controller
         return redirect()->back()->with('message', 'Post deleted successfully');
 
     }
+
+    public function edit($id){
+
+        $post = Post::find($id);
+
+        return view('admin.edit', compact('post'));
+
+    }
 }
