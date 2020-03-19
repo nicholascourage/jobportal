@@ -54,4 +54,16 @@ class DashboardController extends Controller
         return redirect('/dashboard')->with('message', 'Post created successfully.');
 
     }
+
+    public function destroy(Request $request){
+
+        $id = $request->get('id');
+        
+        $post = Post::find($id);
+
+        $post->delete();
+
+        return redirect()->back()->with('message', 'Post deleted successfully');
+
+    }
 }

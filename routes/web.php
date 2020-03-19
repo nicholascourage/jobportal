@@ -89,3 +89,5 @@ Route::get('/dashboard', 'DashboardController@index')->middleware('admin');
 Route::get('/dashboard/create', 'DashboardController@create')->middleware('admin');
 
 Route::post('/dashboard/create', 'DashboardController@store')->name('post.store')->middleware('admin');
+
+Route::post('/dashboard/destroy', 'DashboardController@destroy')->name('post.delete')->middleware('admin');
