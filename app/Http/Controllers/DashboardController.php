@@ -134,4 +134,19 @@ class DashboardController extends Controller
         return redirect()->back()->with('message', 'Post restored successfully');
 
     }
+
+    public function toggle($id){
+
+        $post = Post::find($id);
+
+        $post->status = !$post->status;
+
+        $post->save();
+
+        return redirect()->back()->with('message', 'Status updated successfully.');
+
+
+
+
+    }
 }

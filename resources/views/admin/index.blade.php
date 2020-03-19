@@ -33,11 +33,11 @@
                             <td>
                                 @if($post->status == 1)
                                 
-                                    Live
+                                    <a href="{{route('post.toggle', [$post->id])}}">Live</a>
 
                                 @else
 
-                                    Draft
+                                    <a href="{{route('post.toggle', [$post->id])}}">Draft</a>
 
                                 @endif    
 

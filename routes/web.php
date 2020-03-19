@@ -99,3 +99,5 @@ Route::post('/dashboard/{id}/update', 'DashboardController@update')->name('post.
 Route::get('/dashboard/trash', 'DashboardController@trash')->middleware('admin');
 
 Route::get('/dashboard/{id}/trash', 'DashboardController@restore')->name('post.restore')->middleware('admin');
+
+Route::get('/dashboard/{id}/toggle', 'DashboardController@toggle')->name('post.toggle')->middleware('admin');
