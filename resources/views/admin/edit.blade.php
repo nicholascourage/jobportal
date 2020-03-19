@@ -3,6 +3,11 @@
 @section('content')
 
 <div class="container">
+    @if(Session::has('message'))
+
+        <div class="alert alert-success">{{$message}}</div>
+
+    @endif
     <div class="row">
         <div class="col-md-4">
             @include('admin.left-menu')
@@ -11,7 +16,7 @@
             <div class="card">
                 <div class="card-header">Edit Post</div>
                 <div class="card-body">
-                    <form action="" method="POST" enctype="multipart/form-data">@csrf
+                    <form action="{{route('post.update', [$post->id])}}" method="POST" enctype="multipart/form-data">@csrf
                         <div class="form-group">
                             <label>Title</label>
                             <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ $post->title }}" autofocus>
@@ -33,6 +38,7 @@
                         <div class="form-group">
                             <label>Image</label>
                             <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}">
+                            <img src="{{asset('storage/'.$post->image)}}" class="img-fluid">
                             @error('image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

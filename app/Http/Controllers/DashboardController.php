@@ -74,4 +74,64 @@ class DashboardController extends Controller
         return view('admin.edit', compact('post'));
 
     }
+
+    public function update($id, Request $request){
+
+        $this->validate($request,[
+
+            'title'=>'required|min:3',
+            'content'=>'required', 
+
+        ]);
+
+        if($request->hasFile('image')){
+
+            $file = $request->file('image');
+
+            $path = $file->store('uploads', 'public');
+
+            Post::where('id', $id)->update([
+
+                'title'=> $title = $request->get('title'), 
+                'slug'=>Str::slug($title),
+                'content'=>$request->get('content'),
+                'image'=>$path,
+                'status'=>$request->get('status')
+
+            ]);
+        }
+
+        $this->updateAllExceptImage($id, $request);
+
+        return redirect()->back()->with('message', 'Post updated successfully');
+
+    }
+
+    public function updateAllExceptImage($id, Request $request){#
+
+        return Post::where('id', $id)->update([
+
+            'title'=> $title = $request->get('title'), 
+            'slug'=>Str::slug($title),
+            'content'=>$request->get('content'),
+            'status'=>$request->get('status')
+        ]);
+
+    }
+
+    public function trash(){
+
+        $posts = Post::onlyTrashed()->paginate(20);
+
+        return view('admin.trash', compact('posts'));
+
+    }
+
+    public function restore($id){
+
+        Post::onlyTrashed()->where('id', $id)->restore();
+
+        return redirect()->back()->with('message', 'Post restored successfully');
+
+    }
 }
